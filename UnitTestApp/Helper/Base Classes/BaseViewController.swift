@@ -8,11 +8,23 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.delegate = self.navigationController as? UINavigationControllerDelegate
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.backBarButtonItem =  UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        (self.navigationController as?
+            BaseNavigationController
+        )?.setupBackBarButton()
     }
     
 
